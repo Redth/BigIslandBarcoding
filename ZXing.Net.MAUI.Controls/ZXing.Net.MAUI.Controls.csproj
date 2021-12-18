@@ -1,11 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android;net6.0-maccatalyst;net6.0-ios</TargetFrameworks>
-		<PackageId>ZXing.Net.Maui</PackageId>
+		<PackageId>ZXing.Net.Maui.Controls</PackageId>
 		<Title>ZXing.Net.MAUI Barcode Scanner for .NET MAUI</Title>
 		<Authors>Redth</Authors>
 		<UseMaui>True</UseMaui>
-		<UseMauiEssentials>True</UseMauiEssentials>
 		<SingleProject>True</SingleProject>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<UseSystemResourceKeys>false</UseSystemResourceKeys>
@@ -17,22 +16,11 @@
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<DebugType>portable</DebugType>
 		<OutputType>Library</OutputType>
-		
-	</PropertyGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
-		<PackageReference Include="Xamarin.AndroidX.Camera.Camera2" Version="1.0.1.1" />
-		<PackageReference Include="Xamarin.AndroidX.Camera.Lifecycle" Version="1.0.1.1" />
-		<PackageReference Include="Xamarin.AndroidX.Camera.View" Version="1.0.0.5-alpha20" />
-
-		<AndroidManifest Include="Platforms/Android/AndroidManifest.xml" />
-	</ItemGroup>
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net6.0-ios'">
-		<DefineConstants>IOS</DefineConstants>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">
-		<DefineConstants>MACCATALYST</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="ZXing.Net" Version="0.16.6" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\ZXing.Net.MAUI\ZXing.Net.MAUI.csproj" />
 	</ItemGroup>
 </Project>
