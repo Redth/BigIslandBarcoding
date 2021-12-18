@@ -33,9 +33,6 @@ namespace ZXing.Net.Maui
 		{
 		}
 
-		public event EventHandler<BarcodeDetectionEventArgs> BarcodesDetected;
-		public event EventHandler<CameraFrameBufferEventArgs> FrameReady;
-
 		CameraManager cameraManager;
 
 		protected Readers.IBarcodeReader BarcodeReader
@@ -70,14 +67,14 @@ namespace ZXing.Net.Maui
 
 		private void CameraManager_FrameReady(object sender, CameraFrameBufferEventArgs e)
 		{
-			FrameReady?.Invoke(this, e);
+			VirtualView.FrameReady( e);
 
 			if (VirtualView.IsDetecting)
 			{
 				var barcodes = BarcodeReader.Decode(e.Data);
 
 				if (barcodes?.Any() ?? false)
-					BarcodesDetected?.Invoke(this, new BarcodeDetectionEventArgs(barcodes));
+					VirtualView.BarcodesDetected(new BarcodeDetectionEventArgs(barcodes));
 			}
 		}
 
