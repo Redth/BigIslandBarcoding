@@ -15,6 +15,7 @@
 		<AssemblyFileVersion>$(PackageVersion)</AssemblyFileVersion>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<DebugType>portable</DebugType>
+		<OutputType>Library</OutputType>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
 		<PackageReference Include="Xamarin.AndroidX.Camera.Camera2" Version="1.0.1.1" />
