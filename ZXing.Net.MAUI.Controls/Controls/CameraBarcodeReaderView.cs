@@ -15,24 +15,7 @@ namespace ZXing.Net.Maui.Controls
 		public event EventHandler<BarcodeDetectionEventArgs> BarcodesDetected;
 		public event EventHandler<CameraFrameBufferEventArgs> FrameReady;
 
-		protected override void OnHandlerChanging(HandlerChangingEventArgs args)
-		{
-			base.OnHandlerChanging(args);
-			if (args.OldHandler is CameraBarcodeReaderViewHandler oldHandler)
-			{
-				oldHandler.BarcodesDetected -= Handler_BarcodesDetected;
-				oldHandler.FrameReady -= Handler_FrameReady;
-			}
-
-			if (args.NewHandler is CameraBarcodeReaderViewHandler newHandler)
-			{
-				newHandler.BarcodesDetected += Handler_BarcodesDetected;
-				newHandler.FrameReady += Handler_FrameReady;
-			}
-		}
-
-		void Handler_BarcodesDetected(object sender, BarcodeDetectionEventArgs e)
-			=> BarcodesDetected?.Invoke(this, e);
+		void ICameraBarcodeReaderView.BarcodesDetected(BarcodeDetectionEventArgs e) => BarcodesDetected?.Invoke(this, e);
 
 		public static readonly BindableProperty OptionsProperty =
 			BindableProperty.Create(nameof(Options), typeof(BarcodeReaderOptions), typeof(CameraBarcodeReaderView), defaultValueCreator: bindableObj => new BarcodeReaderOptions());
@@ -52,8 +35,7 @@ namespace ZXing.Net.Maui.Controls
 			set => SetValue(IsDetectingProperty, value);
 		}
 
-		void Handler_FrameReady(object sender, CameraFrameBufferEventArgs e)
-			=> FrameReady?.Invoke(this, e);
+		void ICameraFrameAnalyzer.FrameReady(CameraFrameBufferEventArgs e) => FrameReady?.Invoke(this, e);
 
 		public static readonly BindableProperty IsTorchOnProperty =
 			BindableProperty.Create(nameof(IsTorchOn), typeof(bool), typeof(CameraBarcodeReaderView), defaultValue: true);

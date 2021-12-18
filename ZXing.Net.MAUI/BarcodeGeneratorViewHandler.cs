@@ -83,4 +83,13 @@ namespace ZXing.Net.Maui
 		public static void MapUpdateBarcode(BarcodeGeneratorViewHandler handler, IBarcodeGeneratorView barcodeGeneratorView)
 			=> handler.UpdateBarcode();
 	}
+
+#if !ANDROID && !IOS && !MACCATALYST
+	public class BarcodeWriter : BarcodeWriter<Object>, IBarcodeWriter
+	{
+		public Microsoft.Maui.Graphics.Color ForegroundColor { get; set; }
+
+		public Microsoft.Maui.Graphics.Color BackgroundColor { get; set; }
+	}
+#endif
 }

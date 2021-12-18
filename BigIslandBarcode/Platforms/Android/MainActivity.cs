@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Microsoft.Maui;
+using Microsoft.Maui.Hosting;
 
 namespace BigIslandBarcode
 {

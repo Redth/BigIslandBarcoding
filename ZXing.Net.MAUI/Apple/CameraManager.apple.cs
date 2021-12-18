@@ -105,8 +105,8 @@ namespace ZXing.Net.Maui
 					captureDevice.Dispose();
 					captureDevice = null;
 				}
-
-				var devices = AVCaptureDevice.DevicesWithMediaType(AVMediaType.Video);
+				var devices = AVCaptureDevice.DevicesWithMediaType("vide");
+				if (devices != null)
 				foreach (var device in devices)
 				{
 					if (CameraLocation == CameraLocation.Front &&

@@ -8,6 +8,12 @@ global using NativePlatformCameraPreviewView = global::AndroidX.Camera.View.Prev
 global using NativePlatformView = global::Android.Views.View;
 global using NativePlatformImageView = global::Android.Widget.ImageView;
 global using NativePlatformImage = global::Android.Graphics.Bitmap;
+#else
+global using NativePlatformCameraPreviewView = System.Object;
+global using NativePlatformView = System.Object;
+global using NativePlatformImageView = System.Object;
+global using NativePlatformImage = System.Object;
+
 #endif
 
 using Microsoft.Extensions.Hosting;
