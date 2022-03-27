@@ -1,8 +1,8 @@
 using System;
 using ZXing.Rendering;
-using Microsoft.Maui.Graphics.Native;
 using MauiColor = Microsoft.Maui.Graphics.Color;
 using ZXing.Common;
+using Microsoft.Maui.Graphics.Platform;
 
 #if IOS || MACCATALYST
 using Foundation;
@@ -30,7 +30,7 @@ namespace ZXing.Net.Maui
 			get => new UIColor(bitmapRenderer.BackgroundColor).AsColor();
 			set => bitmapRenderer.BackgroundColor = value.AsCGColor();
 		}
-	}
+    }
 
 	internal class BarcodeBitmapRenderer : IBarcodeRenderer<UIImage>
 	{
