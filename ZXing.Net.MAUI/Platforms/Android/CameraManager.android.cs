@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if ANDROID
+using System;
 using Android.Content;
 using Android.Graphics;
 using Android.Hardware.Camera2;
@@ -17,7 +18,6 @@ using AndroidX.Core.Content;
 using Java.Util;
 using Java.Util.Concurrent;
 using Microsoft.Maui;
-using Microsoft.Maui.Essentials;
 using Microsoft.Maui.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 using static Android.Hardware.Camera;
@@ -126,3 +126,4 @@ namespace ZXing.Net.Maui
 		}
 	}
 }
+#endif
